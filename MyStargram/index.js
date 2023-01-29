@@ -1,0 +1,32 @@
+//ประกาศฟังก์ชั่น
+function appendImageElement(keyword,index){
+    const imgElement = document.createElement("img");
+    imgElement.className = "img"+index;
+    imgElement.src = `https://source.unsplash.com/225x225/?$(keyword)&sig=$(index)`;
+    const galleryElement = document.querySelector(".gallery");
+    galleryElement.appendChild(imgElement); 
+}
+
+function removeAllImage(){ 
+    const galleryElement = document.querySelector(".gallery");
+    galleryElement.innerHTML ="";//ลบรูป
+}
+function searchPhotos(event){
+    const keyword = event.target.value;
+    if(event.key === "Enter" && keyword){
+        removeAllimage();
+        for(let = 1; i<=20; i++)
+        appendImageElement(keyword,i);//หารูป
+    }
+}
+
+function main(){
+    //const inputElement = document.getElementsByClassName("search");
+    //inputElement[0].addEventListener("keydown",searchPhotos);
+    const inputElement = document.querySelector(".search");
+    inputElement.addEventListener("keydown",searchPhotos);
+}
+
+//-------------------------------------------------------//
+//เรียกใช้ฟังก์ชัน
+main();
